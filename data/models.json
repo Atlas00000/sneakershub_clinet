@@ -1,0 +1,16 @@
+{
+  "models": [
+    {
+      "id": "unbranded_white_sneaker",
+      "name": "Unbranded White Sneaker",
+      "url": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/unbranded_white_sneaker.glb",
+      "type": "blank",
+      "scale": 0.0033,
+      "position": [0, 0, 0],
+      "rotation": [0, 0, 0],
+      "description": "Blank canvas sneaker model for customization",
+      "thumbnail": null
+    }
+  ]
+}
+

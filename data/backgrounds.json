@@ -1,0 +1,26 @@
+{
+  "backgrounds": [
+    {
+      "id": "brown_photostudio",
+      "name": "Brown Photo Studio",
+      "url": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/brown_photostudio_01_1k.hdr",
+      "thumbnail": null,
+      "description": "Warm brown photo studio lighting"
+    },
+    {
+      "id": "cyclorama_hard_light",
+      "name": "Cyclorama Hard Light",
+      "url": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/cyclorama_hard_light_1k.hdr",
+      "thumbnail": null,
+      "description": "Hard light cyclorama studio"
+    },
+    {
+      "id": "photo_studio_broadway",
+      "name": "Photo Studio Broadway Hall",
+      "url": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/photo_studio_broadway_hall_1k.hdr",
+      "thumbnail": null,
+      "description": "Broadway hall photo studio"
+    }
+  ]
+}
+

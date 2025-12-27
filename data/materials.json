@@ -1,0 +1,442 @@
+{
+  "materials": [
+    {
+      "id": "leather-black",
+      "name": "Black Leather",
+      "category": "leather",
+      "description": "Premium black leather with smooth finish",
+      "properties": {
+        "color": "#1a1a1a",
+        "roughness": 0.3,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "leather-textured",
+      "name": "Textured Leather",
+      "category": "leather",
+      "description": "High-quality leather with realistic texture, normal map, and roughness variation",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/fabric_leather_01_diff_1k.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/fabric_leather_01_nor_gl_1k.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/fabric_leather_01_rough_1k.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 15,
+      "premium": false
+    },
+    {
+      "id": "leather-brown",
+      "name": "Brown Leather",
+      "category": "leather",
+      "description": "Classic brown leather",
+      "properties": {
+        "color": "#8B4513",
+        "roughness": 0.3,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "leather-white",
+      "name": "White Leather",
+      "category": "leather",
+      "description": "Clean white leather",
+      "properties": {
+        "color": "#ffffff",
+        "roughness": 0.2,
+        "metalness": 0
+      },
+      "priceModifier": 5,
+      "premium": false
+    },
+    {
+      "id": "suede-black",
+      "name": "Black Suede",
+      "category": "fabric",
+      "description": "Soft black suede material",
+      "properties": {
+        "color": "#2a2a2a",
+        "roughness": 0.8,
+        "metalness": 0
+      },
+      "priceModifier": 10,
+      "premium": false
+    },
+    {
+      "id": "suede-tan",
+      "name": "Tan Suede",
+      "category": "fabric",
+      "description": "Warm tan suede",
+      "properties": {
+        "color": "#D2B48C",
+        "roughness": 0.8,
+        "metalness": 0
+      },
+      "priceModifier": 10,
+      "premium": false
+    },
+    {
+      "id": "canvas-black",
+      "name": "Black Canvas",
+      "category": "fabric",
+      "description": "Durable black canvas fabric",
+      "properties": {
+        "color": "#1a1a1a",
+        "roughness": 0.9,
+        "metalness": 0
+      },
+      "priceModifier": -5,
+      "premium": false
+    },
+    {
+      "id": "canvas-white",
+      "name": "White Canvas",
+      "category": "fabric",
+      "description": "Classic white canvas",
+      "properties": {
+        "color": "#ffffff",
+        "roughness": 0.9,
+        "metalness": 0
+      },
+      "priceModifier": -5,
+      "premium": false
+    },
+    {
+      "id": "mesh-black",
+      "name": "Black Mesh",
+      "category": "fabric",
+      "description": "Breathable black mesh",
+      "properties": {
+        "color": "#1a1a1a",
+        "roughness": 0.7,
+        "metalness": 0,
+        "opacity": 0.95,
+        "transparent": true
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "rubber-black",
+      "name": "Black Rubber",
+      "category": "rubber",
+      "description": "Durable black rubber sole",
+      "properties": {
+        "color": "#0a0a0a",
+        "roughness": 0.9,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "rubber-textured",
+      "name": "Textured Rubber",
+      "category": "rubber",
+      "description": "High-quality rubber with realistic texture and surface detail",
+      "properties": {
+        "color": "#ffffff",
+        "map": "/textures/rubber/Rubber004_1K-JPG_Color.jpg",
+        "normalMap": "/textures/rubber/Rubber004_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "/textures/rubber/Rubber004_1K-JPG_Roughness.jpg",
+        "roughness": 0.9,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "rubber-white",
+      "name": "White Rubber",
+      "category": "rubber",
+      "description": "Clean white rubber sole",
+      "properties": {
+        "color": "#f5f5f5",
+        "roughness": 0.9,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "premium-alligator",
+      "name": "Alligator Leather",
+      "category": "premium",
+      "description": "Exotic alligator leather",
+      "properties": {
+        "color": "#2a2a2a",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 100,
+      "premium": true
+    },
+    {
+      "id": "premium-snake",
+      "name": "Snake Skin",
+      "category": "premium",
+      "description": "Exotic snake skin texture",
+      "properties": {
+        "color": "#3a3a3a",
+        "roughness": 0.5,
+        "metalness": 0
+      },
+      "priceModifier": 80,
+      "premium": true
+    },
+    {
+      "id": "textures-black-leather-leather027-1k-jpg",
+      "name": "Textures/black Leather/Leather027 1K JPG",
+      "category": "leather",
+      "description": "Textures/black Leather/Leather027 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/black_leather/Leather027_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/black_leather/Leather027_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/black_leather/Leather027_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "textures-brown-leather-leather014-1k-jpg",
+      "name": "Textures/brown leather/Leather014 1K JPG",
+      "category": "leather",
+      "description": "Textures/brown leather/Leather014 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/brown leather/Leather014_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/brown leather/Leather014_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/brown leather/Leather014_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "textures-cream-leather-leather035d-1k-jpg",
+      "name": "Textures/cream leather/Leather035D 1K JPG",
+      "category": "leather",
+      "description": "Textures/cream leather/Leather035D 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/cream leather/Leather035D_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/cream leather/Leather035D_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/cream leather/Leather035D_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "textures-orange-leather-leather038-1k-jpg",
+      "name": "Textures/orange leather/Leather038 1K JPG",
+      "category": "leather",
+      "description": "Textures/orange leather/Leather038 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/orange leather/Leather038_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/orange leather/Leather038_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/orange leather/Leather038_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "textures-red-leather037-1k-jpg",
+      "name": "Textures/red/Leather037 1K JPG",
+      "category": "leather",
+      "description": "Textures/red/Leather037 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/red/Leather037_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/red/Leather037_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/red/Leather037_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "textures-rough-brown-leather-leather030-1k-jpg",
+      "name": "Textures/rough brown leather/Leather030 1K JPG",
+      "category": "leather",
+      "description": "Textures/rough brown leather/Leather030 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/rough brown leather/Leather030_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/rough brown leather/Leather030_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/rough brown leather/Leather030_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "textures-yellow-leather-leather039-1k-jpg",
+      "name": "Textures/yellow Leather/Leather039 1K JPG",
+      "category": "leather",
+      "description": "Textures/yellow Leather/Leather039 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/yellow_leather/Leather039_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/yellow_leather/Leather039_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/yellow_leather/Leather039_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "fabric-leather-01-1k-gltf-textures-black-leather-leather027-1k-jpg",
+      "name": "Fabric Leather 01 1k.gltf/textures/black Leather/Leather027 1K JPG",
+      "category": "leather",
+      "description": "Fabric Leather 01 1k.gltf/textures/black Leather/Leather027 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/Leather027_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/Leather027_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/Leather027_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "fabric-leather-01-1k-gltf-textures-black-leather-cream-leather-leather035d-1k-jpg",
+      "name": "Fabric Leather 01 1k.gltf/textures/black Leather/cream leather/Leather035D 1K JPG",
+      "category": "leather",
+      "description": "Fabric Leather 01 1k.gltf/textures/black Leather/cream leather/Leather035D 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/cream leather/Leather035D_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/cream leather/Leather035D_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/cream leather/Leather035D_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "fabric-leather-01-1k-gltf-textures-brown-leather-leather014-1k-jpg",
+      "name": "Fabric Leather 01 1k.gltf/textures/brown leather/Leather014 1K JPG",
+      "category": "leather",
+      "description": "Fabric Leather 01 1k.gltf/textures/brown leather/Leather014 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/brown leather/Leather014_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/brown leather/Leather014_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/brown leather/Leather014_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "fabric-leather-01-1k-gltf-textures-cream-leather-leather035d-1k-jpg",
+      "name": "Fabric Leather 01 1k.gltf/textures/cream leather/Leather035D 1K JPG",
+      "category": "leather",
+      "description": "Fabric Leather 01 1k.gltf/textures/cream leather/Leather035D 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/cream leather/Leather035D_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/cream leather/Leather035D_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/cream leather/Leather035D_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "fabric-leather-01-1k-gltf-textures-orange-leather-leather038-1k-jpg",
+      "name": "Fabric Leather 01 1k.gltf/textures/orange leather/Leather038 1K JPG",
+      "category": "leather",
+      "description": "Fabric Leather 01 1k.gltf/textures/orange leather/Leather038 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/orange leather/Leather038_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/orange leather/Leather038_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/orange leather/Leather038_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "fabric-leather-01-1k-gltf-textures-red-leather037-1k-jpg",
+      "name": "Fabric Leather 01 1k.gltf/textures/red/Leather037 1K JPG",
+      "category": "leather",
+      "description": "Fabric Leather 01 1k.gltf/textures/red/Leather037 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/red/Leather037_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/red/Leather037_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/red/Leather037_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "fabric-leather-01-1k-gltf-textures-rough-brown-leather-leather030-1k-jpg",
+      "name": "Fabric Leather 01 1k.gltf/textures/rough brown leather/Leather030 1K JPG",
+      "category": "leather",
+      "description": "Fabric Leather 01 1k.gltf/textures/rough brown leather/Leather030 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/rough brown leather/Leather030_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/rough brown leather/Leather030_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/rough brown leather/Leather030_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    },
+    {
+      "id": "fabric-leather-01-1k-gltf-textures-yellow-leather-leather039-1k-jpg",
+      "name": "Fabric Leather 01 1k.gltf/textures/yellow Leather/Leather039 1K JPG",
+      "category": "leather",
+      "description": "Fabric Leather 01 1k.gltf/textures/yellow Leather/Leather039 1K JPG material with realistic textures",
+      "properties": {
+        "color": "#ffffff",
+        "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/yellow_leather/Leather039_1K-JPG_Color.jpg",
+        "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/yellow_leather/Leather039_1K-JPG_NormalGL.jpg",
+        "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/yellow_leather/Leather039_1K-JPG_Roughness.jpg",
+        "roughness": 0.4,
+        "metalness": 0
+      },
+      "priceModifier": 0,
+      "premium": false
+    }
+  ],
+  "categories": [
+    "leather",
+    "fabric",
+    "synthetic",
+    "rubber",
+    "metal",
+    "premium"
+  ]
+}
