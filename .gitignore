@@ -39,3 +39,4 @@ dist/
 .temp/
 *.tmp
 
+.vercel

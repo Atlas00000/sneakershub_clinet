@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { useMaterialSwapping } from '@/hooks/useMaterialSwapping';
 import { useComponentHover } from '@/hooks/useComponentHover';
@@ -7,6 +8,7 @@ import ModelLoader from './ModelLoader';
 import ComponentHighlighter from './ComponentHighlighter';
 import ComponentLabelTracker from './ComponentLabelTracker';
 import { ComponentMap } from '@/types/models';
+import * as THREE from 'three';
 
 interface ConfiguratorViewportProps {
   /**
@@ -47,10 +49,12 @@ export default function ConfiguratorViewport({
   autoRotate = false,
 }: ConfiguratorViewportProps) {
   const { componentMap, setComponentMap } = useConfiguratorStore();
+  const [loadedScene, setLoadedScene] = useState<THREE.Group | null>(null);
 
-  // Handle model load - save componentMap to store
-  const handleModelLoad = (loadedComponentMap: ComponentMap) => {
+  // Handle model load - save componentMap to store and scene reference
+  const handleModelLoad = (loadedComponentMap: ComponentMap, scene: THREE.Group | null) => {
     setComponentMap(loadedComponentMap);
+    setLoadedScene(scene);
     console.log('\n🎯 MODEL LOADED - Component Map Summary:');
     console.log(`   Total component types available: ${loadedComponentMap.size}`);
     console.log('   Available component types:');
@@ -72,6 +76,7 @@ export default function ConfiguratorViewport({
   // Apply materials to the model components
   useMaterialSwapping({
     componentMap,
+    scene: loadedScene,
     onSwapStart: (componentType, material) => {
       console.log(`Applying material ${material.name} to ${componentType}`);
     },

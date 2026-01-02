@@ -6,12 +6,19 @@ import { useConfiguratorStore } from '@/stores/configuratorStore';
 import { ComponentType, ComponentMap } from '@/types/models';
 import { Material } from '@/types/materials';
 import { createMaterialFromDefinition } from '@/lib/materialManager';
+import { mapMeshToComponent } from '@/lib/componentMapper';
 
 interface UseMaterialSwappingOptions {
   /**
    * Component map from the loaded model
    */
   componentMap: ComponentMap;
+  
+  /**
+   * The scene/group object containing all meshes
+   * Used to find all meshes of a component type
+   */
+  scene?: THREE.Object3D | null;
   
   /**
    * Callback when material swap starts
@@ -35,6 +42,7 @@ interface UseMaterialSwappingOptions {
  */
 export function useMaterialSwapping({
   componentMap,
+  scene,
   onSwapStart,
   onSwapComplete,
   onSwapError,
@@ -52,12 +60,6 @@ export function useMaterialSwapping({
           continue;
         }
 
-        // Get component of this type
-        const component = componentMap.get(componentType);
-        if (!component || !component.mesh) {
-          continue;
-        }
-
         try {
           onSwapStart?.(componentType, material);
 
@@ -72,11 +74,37 @@ export function useMaterialSwapping({
             materialInstancesRef.current.set(materialKey, threeMaterial);
           }
 
-          // Apply material to the component's mesh
+          // Find ALL meshes of this component type in the scene
           const startTime = performance.now();
-          if (component.mesh instanceof THREE.Mesh) {
-            // Clone material for independent modifications
-            component.mesh.material = threeMaterial.clone();
+          const matchingMeshes: THREE.Mesh[] = [];
+
+          if (scene) {
+            // Traverse the scene to find all meshes matching this component type
+            scene.traverse((child) => {
+              if (child instanceof THREE.Mesh) {
+                const meshComponentType = mapMeshToComponent(child.name);
+                if (meshComponentType === componentType) {
+                  matchingMeshes.push(child);
+                }
+              }
+            });
+          } else {
+            // Fallback: use componentMap if scene is not available
+            const component = componentMap.get(componentType);
+            if (component && component.mesh instanceof THREE.Mesh) {
+              matchingMeshes.push(component.mesh);
+            }
+          }
+
+          // Apply material to ALL matching meshes
+          if (matchingMeshes.length > 0) {
+            matchingMeshes.forEach((mesh) => {
+              // Clone material for each mesh to allow independent modifications
+              mesh.material = threeMaterial.clone();
+            });
+            console.log(`Material swap for ${componentType}: applied to ${matchingMeshes.length} mesh(es)`);
+          } else {
+            console.warn(`No meshes found for component type: ${componentType}`);
           }
 
           const swapTime = performance.now() - startTime;
@@ -96,20 +124,40 @@ export function useMaterialSwapping({
       // Remove materials from components that are no longer in the map
       for (const componentType of appliedMaterialsRef.current.keys()) {
         if (!materialMap.has(componentType)) {
-          const componentToRemove = componentMap.get(componentType);
-          if (componentToRemove && componentToRemove.mesh instanceof THREE.Mesh) {
-            // Reset to default material
-            componentToRemove.mesh.material = new THREE.MeshStandardMaterial({
+          // Find all meshes of this component type and reset them
+          const matchingMeshes: THREE.Mesh[] = [];
+
+          if (scene) {
+            scene.traverse((child) => {
+              if (child instanceof THREE.Mesh) {
+                const meshComponentType = mapMeshToComponent(child.name);
+                if (meshComponentType === componentType) {
+                  matchingMeshes.push(child);
+                }
+              }
+            });
+          } else {
+            // Fallback: use componentMap
+            const componentToRemove = componentMap.get(componentType);
+            if (componentToRemove && componentToRemove.mesh instanceof THREE.Mesh) {
+              matchingMeshes.push(componentToRemove.mesh);
+            }
+          }
+
+          // Reset all matching meshes to default material
+          matchingMeshes.forEach((mesh) => {
+            mesh.material = new THREE.MeshStandardMaterial({
               color: 0xcccccc,
             });
-          }
+          });
+
           appliedMaterialsRef.current.delete(componentType);
         }
       }
     };
 
     applyMaterials();
-  }, [materialMap, componentMap, onSwapStart, onSwapComplete, onSwapError]);
+  }, [materialMap, componentMap, scene, onSwapStart, onSwapComplete, onSwapError]);
 
   // Cleanup function
   useEffect(() => {

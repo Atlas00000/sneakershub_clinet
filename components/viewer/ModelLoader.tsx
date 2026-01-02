@@ -38,7 +38,7 @@ interface ModelLoaderProps {
   /**
    * Callback when model loads successfully
    */
-  onLoad?: (componentMap: ComponentMap) => void;
+  onLoad?: (componentMap: ComponentMap, scene: THREE.Group | null) => void;
   
   /**
    * Callback when model fails to load
@@ -122,7 +122,7 @@ export default function ModelLoader({
     ) {
       hasLoadedRef.current = true;
       previousComponentMapSizeRef.current = componentMap.size;
-      onLoad(componentMap);
+      onLoad(componentMap, clonedScene);
     }
   }, [clonedScene, isLoading, componentMap.size, onLoad]);
   
