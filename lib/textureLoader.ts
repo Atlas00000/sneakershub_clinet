@@ -67,14 +67,14 @@ export async function loadTexture(
           texture.minFilter = options.minFilter;
         }
         if (options?.magFilter !== undefined) {
-          texture.magFilter = options.magFilter;
+          (texture as any).magFilter = options.magFilter;
         }
 
         // Set default settings if not provided
         texture.wrapS = texture.wrapS || THREE.RepeatWrapping;
         texture.wrapT = texture.wrapT || THREE.RepeatWrapping;
         texture.minFilter = texture.minFilter || THREE.LinearMipmapLinearFilter;
-        texture.magFilter = texture.magFilter || THREE.LinearFilter;
+        (texture as any).magFilter = (texture as any).magFilter || THREE.LinearFilter;
 
         // Cache the texture
         textureCache.set(cacheKey, texture);
@@ -83,7 +83,8 @@ export async function loadTexture(
       },
       undefined,
       (error) => {
-        reject(new Error(`Failed to load texture: ${texturePath} - ${error.message}`));
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        reject(new Error(`Failed to load texture: ${texturePath} - ${errorMessage}`));
       }
     );
   });

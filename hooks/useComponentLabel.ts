@@ -33,29 +33,14 @@ export function useComponentLabel(componentMap: ComponentMap): LabelPosition | n
       return;
     }
 
-    const components = componentMap.get(hoveredComponent);
-    if (!components || components.length === 0) {
+    const component = componentMap.get(hoveredComponent);
+    if (!component || !component.mesh || !(component.mesh instanceof THREE.Mesh)) {
       setLabelPosition(null);
       setStoreLabelPosition(null);
       return;
     }
 
-    // Get the first component's mesh to calculate position
-    const componentsArray = components as any;
-    if (!Array.isArray(componentsArray) || componentsArray.length === 0) {
-      setLabelPosition(null);
-      setStoreLabelPosition(null);
-      return;
-    }
-
-    const firstComponent: ComponentInfo = componentsArray[0];
-    if (!firstComponent.mesh || !(firstComponent.mesh instanceof THREE.Mesh)) {
-      setLabelPosition(null);
-      setStoreLabelPosition(null);
-      return;
-    }
-
-    const mesh = firstComponent.mesh;
+    const mesh = component.mesh;
     
     // Calculate bounding box center for the component
     const box = new THREE.Box3().setFromObject(mesh);
@@ -76,7 +61,7 @@ export function useComponentLabel(componentMap: ComponentMap): LabelPosition | n
     const isVisible = cameraDirection.dot(toObject) > 0;
 
     // Get component name
-    const componentName = firstComponent.name || firstComponent.originalName || hoveredComponent;
+    const componentName = component.name || component.originalName || hoveredComponent;
 
     const position = {
       x,

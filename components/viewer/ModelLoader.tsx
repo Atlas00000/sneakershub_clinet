@@ -6,6 +6,7 @@ import { useMemo, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { ComponentMap } from '@/types/models';
+import { disposeObject } from '@/lib/three/disposeUtils';
 
 interface ModelLoaderProps {
   /**
@@ -59,9 +60,21 @@ export default function ModelLoader({
 }: ModelLoaderProps) {
   const { scene, error, isLoading } = useModelLoader(modelPath);
 
+  // Track previous scene for cleanup
+  const previousSceneRef = useRef<THREE.Group | null>(null);
+
   // Clone the scene to avoid mutating the original
   const clonedScene = useMemo(() => {
-    if (!scene) return null;
+    // Dispose previous scene when scene changes
+    if (previousSceneRef.current && previousSceneRef.current !== scene) {
+      disposeObject(previousSceneRef.current);
+    }
+
+    if (!scene) {
+      previousSceneRef.current = null;
+      return null;
+    }
+    
     const cloned = scene.clone();
     
     // Calculate bounding box to help with scale debugging
@@ -76,8 +89,19 @@ export default function ModelLoader({
     console.log(`   Current scale: ${Array.isArray(scale) ? scale.join(', ') : scale}`);
     console.log(`   Suggested scale (for ~0.4 units): ${(0.4 / Math.max(size.x, size.y, size.z)).toFixed(6)}`);
     
+    previousSceneRef.current = cloned;
     return cloned;
   }, [scene, scale]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (previousSceneRef.current) {
+        disposeObject(previousSceneRef.current);
+        previousSceneRef.current = null;
+      }
+    };
+  }, []);
 
   // Isolate components from the loaded scene
   const { componentMap, components, error: isolationError } = useComponentIsolation(clonedScene);

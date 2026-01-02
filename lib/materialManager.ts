@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { Material, MaterialProperties } from '@/types/materials';
 import { loadTexture, loadTextures } from './textureLoader';
+import { logger } from './logger';
 
 /**
  * Cache for created materials to avoid recreating identical materials
@@ -103,7 +104,7 @@ export async function createMaterial(properties: MaterialProperties): Promise<TH
         material.aoMap = textures.get(properties.aoMap)!;
       }
     } catch (error) {
-      console.warn('Failed to load some textures:', error);
+      logger.warn('Failed to load some textures', error);
     }
   }
 

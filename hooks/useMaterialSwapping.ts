@@ -52,9 +52,9 @@ export function useMaterialSwapping({
           continue;
         }
 
-        // Get components of this type
-        const components = componentMap.get(componentType);
-        if (!components || components.length === 0) {
+        // Get component of this type
+        const component = componentMap.get(componentType);
+        if (!component || !component.mesh) {
           continue;
         }
 
@@ -72,13 +72,11 @@ export function useMaterialSwapping({
             materialInstancesRef.current.set(materialKey, threeMaterial);
           }
 
-          // Apply material to all meshes of this component type
+          // Apply material to the component's mesh
           const startTime = performance.now();
-          for (const componentInfo of components) {
-            if (componentInfo.mesh instanceof THREE.Mesh) {
-              // Clone material for each mesh to allow independent modifications
-              componentInfo.mesh.material = threeMaterial.clone();
-            }
+          if (component.mesh instanceof THREE.Mesh) {
+            // Clone material for independent modifications
+            component.mesh.material = threeMaterial.clone();
           }
 
           const swapTime = performance.now() - startTime;
@@ -98,16 +96,12 @@ export function useMaterialSwapping({
       // Remove materials from components that are no longer in the map
       for (const componentType of appliedMaterialsRef.current.keys()) {
         if (!materialMap.has(componentType)) {
-          const components = componentMap.get(componentType);
-          if (components) {
-            for (const componentInfo of components) {
-              if (componentInfo.mesh instanceof THREE.Mesh) {
-                // Reset to default material or remove
-                componentInfo.mesh.material = new THREE.MeshStandardMaterial({
-                  color: 0xcccccc,
-                });
-              }
-            }
+          const componentToRemove = componentMap.get(componentType);
+          if (componentToRemove && componentToRemove.mesh instanceof THREE.Mesh) {
+            // Reset to default material
+            componentToRemove.mesh.material = new THREE.MeshStandardMaterial({
+              color: 0xcccccc,
+            });
           }
           appliedMaterialsRef.current.delete(componentType);
         }

@@ -2,9 +2,9 @@
   "materials": [
     {
       "id": "leather-black",
-      "name": "Black Leather",
+      "name": "Classic Black Full-Grain Leather",
       "category": "leather",
-      "description": "Premium black leather with smooth finish",
+      "description": "Premium black full-grain leather upper with smooth, polished finish for timeless elegance",
       "properties": {
         "color": "#1a1a1a",
         "roughness": 0.3,
@@ -15,11 +15,11 @@
     },
     {
       "id": "leather-textured",
-      "name": "Textured Leather",
+      "name": "Premium Textured Leather Upper",
       "category": "leather",
-      "description": "High-quality leather with realistic texture, normal map, and roughness variation",
+      "description": "High-quality textured leather with authentic grain pattern and natural surface variation for premium look and feel",
       "properties": {
-        "color": "#ffffff",
+        "color": "#D4AF8C",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/fabric_leather_01_diff_1k.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/fabric_leather_01_nor_gl_1k.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/fabric_leather_01_rough_1k.jpg",
@@ -31,9 +31,9 @@
     },
     {
       "id": "leather-brown",
-      "name": "Brown Leather",
+      "name": "Vintage Brown Leather",
       "category": "leather",
-      "description": "Classic brown leather",
+      "description": "Classic vintage brown leather upper with rich, warm tones for a timeless aesthetic",
       "properties": {
         "color": "#8B4513",
         "roughness": 0.3,
@@ -44,9 +44,9 @@
     },
     {
       "id": "leather-white",
-      "name": "White Leather",
+      "name": "Crisp White Leather Upper",
       "category": "leather",
-      "description": "Clean white leather",
+      "description": "Clean white leather upper with smooth finish for a fresh, minimalist look",
       "properties": {
         "color": "#ffffff",
         "roughness": 0.2,
@@ -57,9 +57,9 @@
     },
     {
       "id": "suede-black",
-      "name": "Black Suede",
+      "name": "Premium Black Suede",
       "category": "fabric",
-      "description": "Soft black suede material",
+      "description": "Luxurious soft black suede upper with velvety texture for sophisticated style",
       "properties": {
         "color": "#2a2a2a",
         "roughness": 0.8,
@@ -70,9 +70,9 @@
     },
     {
       "id": "suede-tan",
-      "name": "Tan Suede",
+      "name": "Natural Tan Suede",
       "category": "fabric",
-      "description": "Warm tan suede",
+      "description": "Warm natural tan suede upper with rich texture for a premium, earthy look",
       "properties": {
         "color": "#D2B48C",
         "roughness": 0.8,
@@ -83,9 +83,9 @@
     },
     {
       "id": "canvas-black",
-      "name": "Black Canvas",
+      "name": "Durable Black Canvas Upper",
       "category": "fabric",
-      "description": "Durable black canvas fabric",
+      "description": "Heavy-duty black canvas upper material for casual, everyday comfort and durability",
       "properties": {
         "color": "#1a1a1a",
         "roughness": 0.9,
@@ -96,9 +96,9 @@
     },
     {
       "id": "canvas-white",
-      "name": "White Canvas",
+      "name": "Classic White Canvas Upper",
       "category": "fabric",
-      "description": "Classic white canvas",
+      "description": "Iconic white canvas upper for a timeless, versatile sneaker style",
       "properties": {
         "color": "#ffffff",
         "roughness": 0.9,
@@ -109,9 +109,9 @@
     },
     {
       "id": "mesh-black",
-      "name": "Black Mesh",
+      "name": "Breathable Black Mesh Upper",
       "category": "fabric",
-      "description": "Breathable black mesh",
+      "description": "Lightweight black mesh upper for maximum breathability and athletic performance",
       "properties": {
         "color": "#1a1a1a",
         "roughness": 0.7,
@@ -124,9 +124,9 @@
     },
     {
       "id": "rubber-black",
-      "name": "Black Rubber",
+      "name": "Classic Black Rubber Outsole",
       "category": "rubber",
-      "description": "Durable black rubber sole",
+      "description": "Durable black rubber outsole with superior traction and wear resistance",
       "properties": {
         "color": "#0a0a0a",
         "roughness": 0.9,
@@ -137,11 +137,11 @@
     },
     {
       "id": "rubber-textured",
-      "name": "Textured Rubber",
+      "name": "Premium Textured Rubber Outsole",
       "category": "rubber",
-      "description": "High-quality rubber with realistic texture and surface detail",
+      "description": "High-quality textured rubber outsole with detailed surface pattern for enhanced grip and premium appearance",
       "properties": {
-        "color": "#ffffff",
+        "color": "#2a2a2a",
         "map": "/textures/rubber/Rubber004_1K-JPG_Color.jpg",
         "normalMap": "/textures/rubber/Rubber004_1K-JPG_NormalGL.jpg",
         "roughnessMap": "/textures/rubber/Rubber004_1K-JPG_Roughness.jpg",
@@ -153,9 +153,9 @@
     },
     {
       "id": "rubber-white",
-      "name": "White Rubber",
+      "name": "Clean White Rubber Outsole",
       "category": "rubber",
-      "description": "Clean white rubber sole",
+      "description": "Crisp white rubber outsole for a fresh, clean aesthetic with reliable durability",
       "properties": {
         "color": "#f5f5f5",
         "roughness": 0.9,
@@ -166,9 +166,9 @@
     },
     {
       "id": "premium-alligator",
-      "name": "Alligator Leather",
+      "name": "Exotic Alligator Print Leather",
       "category": "premium",
-      "description": "Exotic alligator leather",
+      "description": "Luxurious alligator print leather upper for an exclusive, high-end sneaker design",
       "properties": {
         "color": "#2a2a2a",
         "roughness": 0.4,
@@ -179,9 +179,9 @@
     },
     {
       "id": "premium-snake",
-      "name": "Snake Skin",
+      "name": "Exotic Python Scale Texture",
       "category": "premium",
-      "description": "Exotic snake skin texture",
+      "description": "Premium python scale texture upper for a bold, distinctive luxury sneaker look",
       "properties": {
         "color": "#3a3a3a",
         "roughness": 0.5,
@@ -192,11 +192,11 @@
     },
     {
       "id": "textures-black-leather-leather027-1k-jpg",
-      "name": "Textures/black Leather/Leather027 1K JPG",
+      "name": "Premium Black Leather Grain",
       "category": "leather",
-      "description": "Textures/black Leather/Leather027 1K JPG material with realistic textures",
+      "description": "Authentic black leather with natural grain texture for a sophisticated upper finish",
       "properties": {
-        "color": "#ffffff",
+        "color": "#1a1a1a",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/black_leather/Leather027_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/black_leather/Leather027_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/black_leather/Leather027_1K-JPG_Roughness.jpg",
@@ -208,11 +208,11 @@
     },
     {
       "id": "textures-brown-leather-leather014-1k-jpg",
-      "name": "Textures/brown leather/Leather014 1K JPG",
+      "name": "Rich Brown Leather Grain",
       "category": "leather",
-      "description": "Textures/brown leather/Leather014 1K JPG material with realistic textures",
+      "description": "Deep brown leather with authentic grain texture for a classic, refined upper finish",
       "properties": {
-        "color": "#ffffff",
+        "color": "#8B4513",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/brown leather/Leather014_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/brown leather/Leather014_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/brown leather/Leather014_1K-JPG_Roughness.jpg",
@@ -224,11 +224,11 @@
     },
     {
       "id": "textures-cream-leather-leather035d-1k-jpg",
-      "name": "Textures/cream leather/Leather035D 1K JPG",
+      "name": "Soft Cream Leather",
       "category": "leather",
-      "description": "Textures/cream leather/Leather035D 1K JPG material with realistic textures",
+      "description": "Elegant cream-colored leather with smooth texture for a premium, sophisticated look",
       "properties": {
-        "color": "#ffffff",
+        "color": "#F5E6D3",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/cream leather/Leather035D_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/cream leather/Leather035D_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/cream leather/Leather035D_1K-JPG_Roughness.jpg",
@@ -240,11 +240,11 @@
     },
     {
       "id": "textures-orange-leather-leather038-1k-jpg",
-      "name": "Textures/orange leather/Leather038 1K JPG",
+      "name": "Vibrant Orange Leather",
       "category": "leather",
-      "description": "Textures/orange leather/Leather038 1K JPG material with realistic textures",
+      "description": "Bold orange leather upper with rich texture for a striking, energetic sneaker style",
       "properties": {
-        "color": "#ffffff",
+        "color": "#FF6B35",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/orange leather/Leather038_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/orange leather/Leather038_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/orange leather/Leather038_1K-JPG_Roughness.jpg",
@@ -256,11 +256,11 @@
     },
     {
       "id": "textures-red-leather037-1k-jpg",
-      "name": "Textures/red/Leather037 1K JPG",
+      "name": "Classic Red Leather",
       "category": "leather",
-      "description": "Textures/red/Leather037 1K JPG material with realistic textures",
+      "description": "Vibrant red leather upper with natural grain for a bold, statement-making design",
       "properties": {
-        "color": "#ffffff",
+        "color": "#C41E3A",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/red/Leather037_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/red/Leather037_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/red/Leather037_1K-JPG_Roughness.jpg",
@@ -272,11 +272,11 @@
     },
     {
       "id": "textures-rough-brown-leather-leather030-1k-jpg",
-      "name": "Textures/rough brown leather/Leather030 1K JPG",
+      "name": "Rugged Brown Leather",
       "category": "leather",
-      "description": "Textures/rough brown leather/Leather030 1K JPG material with realistic textures",
+      "description": "Textured rough brown leather with character for a rustic, authentic outdoor aesthetic",
       "properties": {
-        "color": "#ffffff",
+        "color": "#6B4423",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/rough brown leather/Leather030_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/rough brown leather/Leather030_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/rough brown leather/Leather030_1K-JPG_Roughness.jpg",
@@ -288,11 +288,11 @@
     },
     {
       "id": "textures-yellow-leather-leather039-1k-jpg",
-      "name": "Textures/yellow Leather/Leather039 1K JPG",
+      "name": "Bright Yellow Leather",
       "category": "leather",
-      "description": "Textures/yellow Leather/Leather039 1K JPG material with realistic textures",
+      "description": "Eye-catching yellow leather with natural grain for a bold, statement-making sneaker upper",
       "properties": {
-        "color": "#ffffff",
+        "color": "#FFD700",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/yellow_leather/Leather039_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/yellow_leather/Leather039_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/textures/yellow_leather/Leather039_1K-JPG_Roughness.jpg",
@@ -304,11 +304,11 @@
     },
     {
       "id": "fabric-leather-01-1k-gltf-textures-black-leather-leather027-1k-jpg",
-      "name": "Fabric Leather 01 1k.gltf/textures/black Leather/Leather027 1K JPG",
+      "name": "Premium Black Leather Grain",
       "category": "leather",
-      "description": "Fabric Leather 01 1k.gltf/textures/black Leather/Leather027 1K JPG material with realistic textures",
+      "description": "High-quality black leather with detailed grain texture for a sophisticated upper finish",
       "properties": {
-        "color": "#ffffff",
+        "color": "#1a1a1a",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/Leather027_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/Leather027_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/Leather027_1K-JPG_Roughness.jpg",
@@ -320,11 +320,11 @@
     },
     {
       "id": "fabric-leather-01-1k-gltf-textures-black-leather-cream-leather-leather035d-1k-jpg",
-      "name": "Fabric Leather 01 1k.gltf/textures/black Leather/cream leather/Leather035D 1K JPG",
+      "name": "Elegant Cream Leather",
       "category": "leather",
-      "description": "Fabric Leather 01 1k.gltf/textures/black Leather/cream leather/Leather035D 1K JPG material with realistic textures",
+      "description": "Premium cream leather with refined texture for a luxurious, polished sneaker upper",
       "properties": {
-        "color": "#ffffff",
+        "color": "#F5E6D3",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/cream leather/Leather035D_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/cream leather/Leather035D_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/black_leather/cream leather/Leather035D_1K-JPG_Roughness.jpg",
@@ -336,11 +336,11 @@
     },
     {
       "id": "fabric-leather-01-1k-gltf-textures-brown-leather-leather014-1k-jpg",
-      "name": "Fabric Leather 01 1k.gltf/textures/brown leather/Leather014 1K JPG",
+      "name": "Heritage Brown Leather",
       "category": "leather",
-      "description": "Fabric Leather 01 1k.gltf/textures/brown leather/Leather014 1K JPG material with realistic textures",
+      "description": "Traditional brown leather with rich grain pattern for a timeless, heritage-inspired look",
       "properties": {
-        "color": "#ffffff",
+        "color": "#8B4513",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/brown leather/Leather014_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/brown leather/Leather014_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/brown leather/Leather014_1K-JPG_Roughness.jpg",
@@ -352,11 +352,11 @@
     },
     {
       "id": "fabric-leather-01-1k-gltf-textures-cream-leather-leather035d-1k-jpg",
-      "name": "Fabric Leather 01 1k.gltf/textures/cream leather/Leather035D 1K JPG",
+      "name": "Soft Cream Leather Grain",
       "category": "leather",
-      "description": "Fabric Leather 01 1k.gltf/textures/cream leather/Leather035D 1K JPG material with realistic textures",
+      "description": "Delicate cream leather with smooth grain texture for an elegant, minimalist sneaker design",
       "properties": {
-        "color": "#ffffff",
+        "color": "#F5E6D3",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/cream leather/Leather035D_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/cream leather/Leather035D_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/cream leather/Leather035D_1K-JPG_Roughness.jpg",
@@ -368,11 +368,11 @@
     },
     {
       "id": "fabric-leather-01-1k-gltf-textures-orange-leather-leather038-1k-jpg",
-      "name": "Fabric Leather 01 1k.gltf/textures/orange leather/Leather038 1K JPG",
+      "name": "Electric Orange Leather",
       "category": "leather",
-      "description": "Fabric Leather 01 1k.gltf/textures/orange leather/Leather038 1K JPG material with realistic textures",
+      "description": "Vibrant orange leather with textured surface for a bold, energetic sneaker upper",
       "properties": {
-        "color": "#ffffff",
+        "color": "#FF6B35",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/orange leather/Leather038_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/orange leather/Leather038_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/orange leather/Leather038_1K-JPG_Roughness.jpg",
@@ -384,11 +384,11 @@
     },
     {
       "id": "fabric-leather-01-1k-gltf-textures-red-leather037-1k-jpg",
-      "name": "Fabric Leather 01 1k.gltf/textures/red/Leather037 1K JPG",
+      "name": "Racing Red Leather",
       "category": "leather",
-      "description": "Fabric Leather 01 1k.gltf/textures/red/Leather037 1K JPG material with realistic textures",
+      "description": "Dynamic red leather with authentic texture for a sporty, high-energy sneaker design",
       "properties": {
-        "color": "#ffffff",
+        "color": "#C41E3A",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/red/Leather037_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/red/Leather037_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/red/Leather037_1K-JPG_Roughness.jpg",
@@ -400,11 +400,11 @@
     },
     {
       "id": "fabric-leather-01-1k-gltf-textures-rough-brown-leather-leather030-1k-jpg",
-      "name": "Fabric Leather 01 1k.gltf/textures/rough brown leather/Leather030 1K JPG",
+      "name": "Worn Brown Leather",
       "category": "leather",
-      "description": "Fabric Leather 01 1k.gltf/textures/rough brown leather/Leather030 1K JPG material with realistic textures",
+      "description": "Vintage brown leather with distressed texture for an authentic, weathered sneaker appearance",
       "properties": {
-        "color": "#ffffff",
+        "color": "#6B4423",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/rough brown leather/Leather030_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/rough brown leather/Leather030_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/rough brown leather/Leather030_1K-JPG_Roughness.jpg",
@@ -416,11 +416,11 @@
     },
     {
       "id": "fabric-leather-01-1k-gltf-textures-yellow-leather-leather039-1k-jpg",
-      "name": "Fabric Leather 01 1k.gltf/textures/yellow Leather/Leather039 1K JPG",
+      "name": "Sunshine Yellow Leather",
       "category": "leather",
-      "description": "Fabric Leather 01 1k.gltf/textures/yellow Leather/Leather039 1K JPG material with realistic textures",
+      "description": "Vibrant yellow leather with natural grain texture for a bold, eye-catching sneaker upper",
       "properties": {
-        "color": "#ffffff",
+        "color": "#FFD700",
         "map": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/yellow_leather/Leather039_1K-JPG_Color.jpg",
         "normalMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/yellow_leather/Leather039_1K-JPG_NormalGL.jpg",
         "roughnessMap": "https://pub-42d9986d97a0490598cb89136641b713.r2.dev/fabric_leather_01_1k.gltf/textures/yellow_leather/Leather039_1K-JPG_Roughness.jpg",

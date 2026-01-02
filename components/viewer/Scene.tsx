@@ -18,8 +18,8 @@ export default function Scene({ children }: SceneProps) {
   const hdrUrl = selectedBackgroundUrl || 'https://pub-42d9986d97a0490598cb89136641b713.r2.dev/brown_photostudio_01_1k.hdr';
 
   return (
-    <div className="relative w-full h-screen bg-gray-900">
-      <Suspense fallback={<LoadingSpinner />}>
+    <div className="relative w-full h-screen bg-charcoal-900">
+      <Suspense fallback={<LoadingSpinner message="Loading 3D scene..." size="lg" />}>
         <Canvas
           camera={{ position: [0, 1, 8], fov: 50 }}
           gl={{ antialias: true }}

@@ -1,95 +1,97 @@
 'use client';
 
-import { Material, MaterialCategory } from '@/types/materials';
+import { motion } from 'framer-motion';
+import { Material } from '@/types/materials';
+import { cn } from '@/lib/utils';
 
 interface MaterialSwatchProps {
   material: Material;
   isSelected?: boolean;
   onClick?: () => void;
-  showPrice?: boolean;
+  /**
+   * Callback when hover state changes, receives mouse position
+   */
+  onHoverChange?: (isHovering: boolean, position: { x: number; y: number }) => void;
 }
 
 /**
- * Category icons/colors
- */
-const CategoryStyles: Record<MaterialCategory, { bg: string; border: string }> = {
-  [MaterialCategory.LEATHER]: { bg: 'bg-amber-50', border: 'border-amber-300' },
-  [MaterialCategory.FABRIC]: { bg: 'bg-blue-50', border: 'border-blue-300' },
-  [MaterialCategory.SYNTHETIC]: { bg: 'bg-gray-50', border: 'border-gray-300' },
-  [MaterialCategory.RUBBER]: { bg: 'bg-slate-50', border: 'border-slate-300' },
-  [MaterialCategory.METAL]: { bg: 'bg-yellow-50', border: 'border-yellow-300' },
-  [MaterialCategory.PREMIUM]: { bg: 'bg-purple-50', border: 'border-purple-400' },
-};
-
-/**
- * Individual material swatch card
+ * Compact circular material swatch - shows color thumbnail only
  */
 export default function MaterialSwatch({
   material,
   isSelected = false,
   onClick,
-  showPrice = true,
+  onHoverChange,
 }: MaterialSwatchProps) {
-  const categoryStyle = CategoryStyles[material.category];
   const color = material.properties.color || '#cccccc';
   const colorValue = typeof color === 'string' ? color : `#${color.getHexString()}`;
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (onHoverChange) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      onHoverChange(true, {
+        x: rect.left + rect.width / 2,
+        y: rect.top,
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (onHoverChange) {
+      onHoverChange(false, { x: 0, y: 0 });
+    }
+  };
+
   return (
-    <button
+    <motion.button
       onClick={onClick}
-      className={`
-        relative p-4 rounded-lg border-2 transition-all duration-200
-        ${isSelected
-          ? 'border-blue-500 shadow-lg scale-105'
-          : `${categoryStyle.border} hover:border-blue-400 hover:shadow-md`
-        }
-        ${categoryStyle.bg}
-        ${material.premium ? 'ring-2 ring-purple-300' : ''}
-      `}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      whileHover={{ scale: 1.15 }}
+      whileTap={{ scale: 0.95 }}
+      className={cn(
+        'relative w-12 h-12 rounded-full transition-all duration-300',
+        'border-2 shadow-lg',
+        isSelected
+          ? 'border-accent-blue-500 ring-4 ring-accent-blue-500/30 shadow-xl shadow-accent-blue-500/40'
+          : 'border-slate-700/50 hover:border-accent-blue-500/60 hover:shadow-xl hover:shadow-accent-blue-500/20'
+      )}
+      style={{ backgroundColor: colorValue }}
     >
-      {/* Premium badge */}
-      {material.premium && (
-        <div className="absolute top-2 right-2 bg-purple-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-          Premium
-        </div>
-      )}
-
-      {/* Color preview */}
-      <div
-        className="w-full h-20 rounded-md mb-3 border border-gray-300 shadow-inner"
-        style={{ backgroundColor: colorValue }}
-      />
-
-      {/* Material info */}
-      <div className="text-left">
-        <h4 className="font-semibold text-gray-900 mb-1">{material.name}</h4>
-        {material.description && (
-          <p className="text-xs text-gray-600 mb-2 line-clamp-2">{material.description}</p>
-        )}
-        
-        {/* Price modifier */}
-        {showPrice && material.priceModifier !== undefined && material.priceModifier !== 0 && (
-          <div className={`
-            text-sm font-medium
-            ${material.priceModifier > 0 ? 'text-red-600' : 'text-green-600'}
-          `}>
-            {material.priceModifier > 0 ? '+' : ''}${material.priceModifier}$
-          </div>
-        )}
-        {showPrice && material.priceModifier === 0 && (
-          <div className="text-sm text-gray-500">Base price</div>
-        )}
-      </div>
-
-      {/* Selected indicator */}
+      {/* Inner shadow for depth */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-transparent to-black/20 pointer-events-none" />
+      
+      {/* Selected checkmark */}
       {isSelected && (
-        <div className="absolute top-2 left-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          className="absolute inset-0 rounded-full flex items-center justify-center pointer-events-none"
+        >
+          <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-lg">
+            <svg className="w-3 h-3 text-accent-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        </motion.div>
       )}
-    </button>
+
+      {/* Premium indicator - small dot */}
+      {material.premium && !isSelected && (
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-accent-violet-500 to-accent-violet-600 rounded-full border-2 border-charcoal-900 shadow-lg"
+        />
+      )}
+
+      {/* Hover ring */}
+      <motion.div
+        className="absolute inset-0 rounded-full border-2 border-white/30 pointer-events-none"
+        initial={{ opacity: 0, scale: 1 }}
+        whileHover={{ opacity: 1, scale: 1.2 }}
+        transition={{ duration: 0.2 }}
+      />
+    </motion.button>
   );
 }
-

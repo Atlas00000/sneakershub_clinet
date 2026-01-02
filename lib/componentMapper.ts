@@ -80,17 +80,18 @@ export function extractComponentsFromObject(object: THREE.Object3D): ComponentIn
 
 /**
  * Creates a ComponentMap from an array of ComponentInfo
- * Handles duplicate component types by appending index
+ * Takes the first ComponentInfo for each component type
  * @param components - Array of component info
- * @returns ComponentMap
+ * @returns ComponentMap (Map<ComponentType, ComponentInfo>)
  */
-export function createComponentMap(components: ComponentInfo[]): Map<ComponentType, ComponentInfo[]> {
-  const map = new Map<ComponentType, ComponentInfo[]>();
+export function createComponentMap(components: ComponentInfo[]): Map<ComponentType, ComponentInfo> {
+  const map = new Map<ComponentType, ComponentInfo>();
 
   for (const component of components) {
-    const existing = map.get(component.type) || [];
-    existing.push(component);
-    map.set(component.type, existing);
+    // Only set if this type doesn't already exist (take first occurrence)
+    if (!map.has(component.type)) {
+      map.set(component.type, component);
+    }
   }
 
   return map;

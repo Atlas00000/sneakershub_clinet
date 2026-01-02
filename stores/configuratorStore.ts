@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ComponentType, ComponentMap } from '@/types/models';
+import { ComponentType, ComponentMap, ComponentInfo } from '@/types/models';
 import { Material, MaterialMap } from '@/types/materials';
 
 type Mode = 'blank' | 'branded';
@@ -61,7 +61,7 @@ export const useConfiguratorStore = create<ConfiguratorState>((set) => ({
   selectedComponent: null,
   hoveredComponent: null,
   labelPosition: null,
-  componentMap: new Map<ComponentType, any[]>(),
+  componentMap: new Map<ComponentType, ComponentInfo>(),
   materialMap: new Map<ComponentType, Material>(),
   selectedBackgroundUrl: DEFAULT_BACKGROUND_URL,
   selectedModelId: DEFAULT_MODEL_ID,

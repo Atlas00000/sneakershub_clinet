@@ -1,8 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 import modelsData from '@/data/models.json';
+import { Panel } from '@/components/ui';
+import ModelGrid from './ModelGrid';
+import ModelTooltip from './ModelTooltip';
+import { getModelGradient, getModelIcon } from './ModelSwatch';
 
 interface Model {
   id: string;
@@ -18,10 +22,13 @@ interface Model {
 
 /**
  * Model selector UI - allows users to select which 3D model to configure
+ * Uses circular swatches in a compact grid layout for minimalistic design
  */
 export default function ModelSelector() {
   const { selectedModelId, setModel } = useConfiguratorStore();
   const models = modelsData.models as Model[];
+  const [hoveredModel, setHoveredModel] = useState<Model | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   // Auto-select first model if none is selected
   useEffect(() => {
@@ -47,52 +54,40 @@ export default function ModelSelector() {
     );
   };
 
-  return (
-    <div className="bg-white rounded-lg shadow-md p-4">
-      <h3 className="text-lg font-semibold mb-4 text-gray-800">Model</h3>
-      <div className="space-y-2 max-h-96 overflow-y-auto">
-        {models.map((model) => {
-          const isSelected = selectedModelId === model.id;
+  const handleHoverChange = (model: Model | null, isHovering: boolean, position: { x: number; y: number }) => {
+    if (isHovering && model) {
+      setHoveredModel(model);
+      setTooltipPosition(position);
+    } else {
+      setHoveredModel(null);
+    }
+  };
 
-          return (
-            <button
-              key={model.id}
-              onClick={() => handleModelSelect(model)}
-              className={`
-                w-full text-left p-3 rounded-lg font-medium transition-all duration-200
-                ${isSelected
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }
-              `}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-semibold">{model.name}</div>
-                  {model.description && (
-                    <div className={`text-xs mt-1 ${isSelected ? 'text-blue-100' : 'text-gray-500'}`}>
-                      {model.description}
-                    </div>
-                  )}
-                  <div className={`text-xs mt-1 ${isSelected ? 'text-blue-100' : 'text-gray-400'}`}>
-                    Type: {model.type}
-                  </div>
-                </div>
-                {isSelected && (
-                  <span className="text-xl">✓</span>
-                )}
-              </div>
-            </button>
-          );
-        })}
-      </div>
-      {selectedModelId && (
-        <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-          <p className="text-sm text-blue-800">
-            Model selected
-          </p>
-        </div>
+  return (
+    <>
+      <Panel
+        title="Model"
+        description="Select your canvas—choose from our collection of premium 3D sneaker models. Each model serves as your foundation for creating unique designs with real-time photorealistic rendering."
+        divider={true}
+      >
+        <ModelGrid
+          models={models}
+          selectedModelId={selectedModelId}
+          onModelSelect={handleModelSelect}
+          onHoverChange={handleHoverChange}
+        />
+      </Panel>
+
+      {/* Model Tooltip - shows on hover */}
+      {hoveredModel && (
+        <ModelTooltip
+          model={hoveredModel}
+          isVisible={!!hoveredModel}
+          position={tooltipPosition}
+          gradient={getModelGradient(hoveredModel)}
+          icon={getModelIcon(hoveredModel)}
+        />
       )}
-    </div>
+    </>
   );
 }

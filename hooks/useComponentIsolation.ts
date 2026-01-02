@@ -32,7 +32,7 @@ export function useComponentIsolation(
     if (!scene) {
       return {
         components: [],
-        componentMap: new Map<ComponentType, ComponentInfo[]>(),
+        componentMap: new Map<ComponentType, ComponentInfo>(),
       };
     }
 
@@ -51,7 +51,7 @@ export function useComponentIsolation(
       const error = err instanceof Error ? err : new Error('Failed to isolate components');
       return {
         components: [],
-        componentMap: new Map<ComponentType, ComponentInfo[]>(),
+        componentMap: new Map<ComponentType, ComponentInfo>(),
       };
     }
   }, [scene]);
