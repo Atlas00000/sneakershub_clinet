@@ -1,4 +1,4 @@
-# 🎨 Fashion Configurator Client
+# 🎨 SneakersHub Client
 
 <div align="center">
 
@@ -9,11 +9,13 @@
 [![Three.js](https://img.shields.io/badge/Three.js-0.160-black?style=for-the-badge&logo=three.js)](https://threejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
+[Features](#-features) • [Architecture](#-architecture) • [Setup](#-setup) • [Testing](#-testing) • [Development](#-development)
+
 </div>
 
 ---
 
-## 📖 Table of Contents
+## 📋 Table of Contents
 
 - [Overview](#-overview)
 - [Features](#-features)
@@ -23,6 +25,8 @@
 - [Components](#-components)
 - [Hooks](#-hooks)
 - [State Management](#-state-management)
+- [Performance Optimizations](#-performance-optimizations)
+- [Testing](#-testing)
 - [Development](#-development)
 - [Deployment](#-deployment)
 
@@ -30,143 +34,162 @@
 
 ## 🎯 Overview
 
-The Fashion Configurator Client is a Next.js application that provides an interactive 3D web interface for customizing sneakers. Built with React Three Fiber, it enables real-time material swapping, component selection, and model visualization.
+The SneakersHub Client is a Next.js application that provides an interactive 3D web interface for customizing sneakers. Built with React Three Fiber, it enables real-time material swapping, component selection, and photorealistic model visualization.
 
 ### Key Capabilities
 
-- 🎨 **Real-time 3D Rendering** - Interactive 3D scene with Three.js
+- 🎨 **Real-time 3D Rendering** - Interactive 3D scene with Three.js and React Three Fiber
 - 🎭 **Component Customization** - Select and customize individual shoe components
 - 🌍 **Dynamic Environments** - Switch between HDR background environments
 - 📦 **Model Management** - Load and switch between different 3D models
-- 🎨 **Material Library** - Browse and apply PBR materials
-- ⚡ **Performance Optimized** - Efficient rendering with texture caching
+- 🎨 **Material Library** - Browse and apply PBR materials with texture maps
+- ⚡ **Performance Optimized** - Efficient rendering with lazy loading and caching
+- 📱 **Responsive Design** - Dedicated mobile and desktop layouts
 
 ---
 
 ## ✨ Features
 
 ### 🎨 Material System
+
 - **PBR Materials** - Physically Based Rendering for realistic materials
-- **Texture Support** - Albedo, normal, roughness, and metallic maps
-- **Color Customization** - Solid colors and textured materials
-- **Material Categories** - Leather, rubber, fabric, metal, premium
-- **Material Swatches** - Visual material previews
+- **Texture Maps** - Support for albedo, normal, roughness, and metallic maps
+- **Material Library** - Extensive collection organized by category
+- **Search & Filter** - Find materials by name, category, or description
+- **Real-time Application** - Instant material swapping with visual feedback
+- **Multi-Mesh Support** - Applies materials to all meshes of a component type
 
 ### 🎯 Component System
+
 - **Automatic Detection** - Smart component identification from mesh names
 - **Component Types** - Sole, Upper, Midsole, Outsole, Laces, Logo, Heel Tab, Tongue, Eyelets, Lining
-- **Visual Selection** - Subtle highlighting for hovered and selected components
-- **Component Labels** - Real-time hover labels showing component names
+- **Visual Feedback** - Subtle highlighting for hovered and selected components
+- **Component Labels** - Hover labels showing component names in real-time
 - **Click-to-Select** - Interactive component selection via mouse click
-- **Material Mapping** - Apply materials to specific components
+- **Circular Selectors** - Clean, minimalistic circular selector design
 
-### 🌐 Environment & Models
+### 🌐 Viewer Features
+
 - **HDR Backgrounds** - Realistic lighting with High Dynamic Range images
 - **Multiple Models** - Switch between different sneaker models
 - **Dynamic Scaling** - Automatic and manual model scaling
-- **Camera Controls** - Orbit, zoom, and pan controls
+- **Camera Controls** - Orbit, zoom, and pan controls with smooth animations
+- **Model Persistence** - Remembers selected model across sessions
+- **Error Boundaries** - Graceful error handling with fallback UI
 
-### 🎛️ User Interface
-- **Component Selector** - Choose which part to customize
-- **Material Library** - Browse available materials
-- **Background Selector** - Switch HDR environments
-- **Model Selector** - Switch between 3D models
-- **Mode Selector** - Toggle between blank and branded modes
-- **Interactive Labels** - Hover over components to see names
-- **Visual Feedback** - Subtle highlights indicate hover and selection states
+### 🎭 User Interface
+
+- **Glassmorphic Design** - Modern, sleek UI with glassmorphism effects
+- **Animated Transitions** - Smooth animations with Framer Motion
+- **Responsive Layout** - Dedicated mobile and desktop layouts
+- **Loading States** - Skeleton loaders and progress indicators
+- **Error Handling** - Comprehensive error boundaries and fallback UI
+- **Accessibility** - Keyboard navigation and ARIA labels
 
 ---
 
 ## 🏗️ Architecture
 
+### Component Architecture
+
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    Next.js App Router                       │
-│                                                             │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │                    Pages                              │  │
-│  │  • /configurator/branded                             │  │
-│  │  • /configurator/blank                                │  │
-│  │  • / (home)                                          │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                             │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │              Configurator Components                  │  │
-│  │  • ComponentSelector                                 │  │
-│  │  • MaterialLibrary                                   │  │
-│  │  • BackgroundSelector                                │  │
-│  │  • ModelSelector                                     │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                             │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │                Viewer Components                     │  │
-│  │  • Scene (Three.js Canvas)                          │  │
-│  │  • ConfiguratorViewport                             │  │
-│  │  • ModelLoader                                       │  │
-│  │  • CameraControls                                    │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                             │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │                  Custom Hooks                        │  │
-│  │  • useModelLoader                                    │  │
-│  │  • useComponentIsolation                             │  │
-│  │  • useMaterialSwapping                                │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                             │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │              State Management (Zustand)             │  │
-│  │  • configuratorStore                                │  │
-│  │    - Component state                                │  │
-│  │    - Material state                                 │  │
-│  │    - Model state                                    │  │
-│  │    - Background state                               │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                             │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │                  Utility Libraries                   │  │
-│  │  • componentMapper                                  │  │
-│  │  • materialManager                                  │  │
-│  │  • textureLoader                                    │  │
-│  └──────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────┐
+│                    Page Layer                            │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
+│  │   Home       │  │  Branded     │  │   Blank      │ │
+│  │   Page       │  │  Config      │  │   Config     │ │
+│  └──────────────┘  └──────────────┘  └──────────────┘ │
+└─────────────────────────────────────────────────────────┘
+                          ↕
+┌─────────────────────────────────────────────────────────┐
+│                 Layout Components                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
+│  │ Configurator │  │   Desktop    │  │   Mobile     │ │
+│  │   Layout     │  │   Layout     │  │   Layout     │ │
+│  │              │  │              │  │              │ │
+│  │  • TopBar    │  │  • Sidebar   │  │  • Drawer    │ │
+│  │  • Sidebar   │  │  • Content   │  │  • FAB       │ │
+│  └──────────────┘  └──────────────┘  └──────────────┘ │
+└─────────────────────────────────────────────────────────┘
+                          ↕
+┌─────────────────────────────────────────────────────────┐
+│              Feature Components                          │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
+│  │   Viewer     │  │ Configurator │  │   Material   │ │
+│  │              │  │              │  │   Library    │ │
+│  │  • Scene     │  │  • Model     │  │              │ │
+│  │  • Model     │  │  • Component │  │  • Search    │ │
+│  │  • Camera    │  │  • Background│  │  • Filter    │ │
+│  └──────────────┘  └──────────────┘  └──────────────┘ │
+└─────────────────────────────────────────────────────────┘
+                          ↕
+┌─────────────────────────────────────────────────────────┐
+│                  UI Components                           │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
+│  │   Button     │  │    Input     │  │    Panel     │ │
+│  │   Card       │  │   Skeleton   │  │   Modal      │ │
+│  └──────────────┘  └──────────────┘  └──────────────┘ │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Data Flow
+
+```
+User Interaction
+       ↓
+  UI Component
+       ↓
+  Zustand Store (State Management)
+       ↓
+  Custom Hook (Business Logic)
+       ↓
+  Three.js / API (Side Effects)
+       ↓
+  State Update
+       ↓
+  UI Re-render
 ```
 
 ---
 
-## ⚙️ Setup
+## 🚀 Setup
 
 ### Prerequisites
 
 - **Node.js** 18+
-- **pnpm** (or npm/yarn)
+- **pnpm** (recommended) or npm/yarn
 
 ### Installation
 
-1. **Install dependencies**
+1. **Navigate to client directory**
    ```bash
    cd client
+   ```
+
+2. **Install dependencies**
+   ```bash
    pnpm install
    ```
 
-2. **Configure environment variables**
-   ```bash
-   cp .env.example .env.local
-   # Edit .env.local with your API URL
+3. **Set up environment variables**
+
+   Create `.env.local`:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:3001
+   NODE_ENV=development
    ```
 
-3. **Start development server**
+4. **Start development server**
    ```bash
    pnpm dev
-   # Application runs on http://localhost:3000
+   # → http://localhost:3000
    ```
 
-### Environment Variables
-
-Create a `.env.local` file:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:3001
-```
+5. **Build for production**
+   ```bash
+   pnpm build
+   pnpm start
+   ```
 
 ---
 
@@ -175,63 +198,72 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 client/
 ├── 📂 app/                      # Next.js App Router
-│   ├── configurator/
-│   │   ├── branded/            # Brand collection mode page
-│   │   │   └── page.tsx
-│   │   └── blank/              # Blank canvas mode page
-│   │       └── page.tsx
-│   ├── layout.tsx              # Root layout
+│   ├── configurator/           # Configurator pages
+│   │   ├── branded/            # Brand collection mode
+│   │   └── blank/              # Blank canvas mode
+│   ├── layout.tsx              # Root layout with providers
 │   ├── page.tsx                # Home page
 │   └── globals.css             # Global styles
 │
-├── 📂 components/
+├── 📂 components/              # React components
 │   ├── configurator/           # Configurator UI components
+│   │   ├── BackgroundSelector.tsx
 │   │   ├── ComponentSelector.tsx
 │   │   ├── MaterialLibrary.tsx
-│   │   ├── MaterialSwatch.tsx
-│   │   ├── BackgroundSelector.tsx
-│   │   ├── ModelSelector.tsx
-│   │   └── ModeSelector.tsx
-│   └── viewer/                 # 3D viewer components
-│       ├── Scene.tsx
-│       ├── ConfiguratorViewport.tsx
-│       ├── ModelLoader.tsx
-│       ├── CameraControls.tsx
-│       └── LoadingSpinner.tsx
+│   │   └── ModelSelector.tsx
+│   ├── viewer/                 # 3D viewer components
+│   │   ├── Scene.tsx
+│   │   ├── ModelLoader.tsx
+│   │   ├── ConfiguratorViewport.tsx
+│   │   └── CameraControls.tsx
+│   ├── layout/                 # Layout components
+│   │   ├── ConfiguratorLayout.tsx
+│   │   ├── DesktopLayout.tsx
+│   │   ├── MobileLayout.tsx
+│   │   └── TopBar.tsx
+│   ├── ui/                     # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   ├── Panel.tsx
+│   │   └── Skeleton.tsx
+│   ├── error/                  # Error boundary components
+│   │   ├── ErrorBoundary.tsx
+│   │   └── ErrorFallback.tsx
+│   └── loading/                # Loading components
+│       └── LoadingScreen.tsx
 │
-├── 📂 hooks/                    # Custom React hooks
-│   ├── useModelLoader.ts
-│   ├── useComponentIsolation.ts
-│   ├── useMaterialSwapping.ts
-│   ├── useComponentHover.ts
-│   └── useComponentLabel.ts
+├── 📂 hooks/                   # Custom React hooks
+│   ├── useModelLoader.ts       # Model loading logic
+│   ├── useMaterialSwapping.ts  # Material application
+│   ├── useComponentIsolation.ts # Component detection
+│   ├── useModelPersistence.ts  # localStorage persistence
+│   └── useDebounce.ts          # Debouncing utility
 │
-├── 📂 lib/                      # Utility libraries
+├── 📂 lib/                     # Utility libraries
+│   ├── api/                    # API client
+│   │   ├── client.ts
+│   │   └── materials.ts
+│   ├── three/                  # Three.js utilities
+│   │   └── disposeUtils.ts
 │   ├── componentMapper.ts      # Component name mapping
 │   ├── materialManager.ts      # Material management
-│   ├── textureLoader.ts        # Texture loading utilities
-│   └── cloudflare/
-│       └── r2Client.ts         # R2 client (if needed)
+│   ├── textureLoader.ts        # Texture loading
+│   └── queryClient.ts          # React Query configuration
 │
-├── 📂 stores/                   # Zustand state management
-│   └── configuratorStore.ts
+├── 📂 stores/                  # Zustand stores
+│   └── configuratorStore.ts    # Main application state
 │
-├── 📂 data/                     # Static data (JSON)
-│   ├── materials.json          # Material definitions
-│   ├── models.json             # Model definitions
-│   └── backgrounds.json        # HDR background URLs
-│
-├── 📂 types/                    # TypeScript type definitions
+├── 📂 types/                   # TypeScript type definitions
 │   ├── materials.ts
 │   └── models.ts
 │
-├── 📂 public/                   # Static assets
-│   └── textures/               # Local texture files
+├── 📂 data/                    # Static data (JSON)
+│   ├── materials.json
+│   ├── models.json
+│   └── backgrounds.json
 │
-├── next.config.js               # Next.js configuration
-├── tailwind.config.js           # Tailwind CSS configuration
-├── tsconfig.json                # TypeScript configuration
-└── package.json                 # Dependencies
+└── 📂 public/                  # Static assets
+    └── textures/
 ```
 
 ---
@@ -240,259 +272,318 @@ client/
 
 ### Configurator Components
 
-#### `ComponentSelector`
-Displays available components and allows selection.
-
-**Props:** None (uses Zustand store)
+#### MaterialLibrary
+Browse and search materials with category filtering.
 
 **Features:**
-- Lists detected components from the model
-- Highlights selected component
-- Shows component count per type
+- Search by name, description, or category
+- Category-based filtering
+- Lazy loading for performance
+- Debounced search input
 
-#### `MaterialLibrary`
-Displays available materials organized by category.
-
-**Props:** None (uses Zustand store)
-
-**Features:**
-- Material categories (leather, rubber, fabric, metal, premium)
-- Material swatches with previews
-- Apply materials to selected component
-- Price modifiers display
-
-#### `MaterialSwatch`
-Individual material preview card.
-
-**Props:**
-- `material: Material` - Material definition
-- `onSelect: () => void` - Selection handler
-
-#### `BackgroundSelector`
-Allows switching between HDR background environments.
-
-**Props:** None (uses Zustand store)
+#### ComponentSelector
+Select shoe components for customization.
 
 **Features:**
-- List of available HDR backgrounds
-- Preview thumbnails (if available)
+- Circular selector design
+- Component icons/emojis
+- Hover tooltips
+- Click-to-select interaction
+
+#### ModelSelector
+Choose from available 3D models.
+
+**Features:**
+- Grid layout with model previews
+- Model information tooltips
+- Model persistence (localStorage)
+
+#### BackgroundSelector
+Switch between HDR environments.
+
+**Features:**
+- Visual previews with gradients
 - Real-time environment switching
-
-#### `ModelSelector`
-Allows switching between different 3D models.
-
-**Props:** None (uses Zustand store)
-
-**Features:**
-- List of available models
-- Model metadata (name, type)
-- Automatic model loading
+- Hover tooltips with descriptions
 
 ### Viewer Components
 
-#### `Scene`
-Main Three.js canvas wrapper with environment setup.
+#### Scene
+Main Three.js scene wrapper with HDR environment.
 
-**Props:**
-- `children: React.ReactNode` - Scene content
-
-**Features:**
-- HDR environment loading
-- Camera setup
-- Lighting configuration
-
-#### `ConfiguratorViewport`
-Main viewport component that orchestrates model loading and material swapping.
-
-**Props:**
-- `modelPath: string` - Model URL or path
-- `scale?: number` - Model scale
-- `position?: [number, number, number]` - Model position
-- `rotation?: [number, number, number]` - Model rotation
+#### ModelLoader
+Loads and displays 3D models from Cloudflare R2.
 
 **Features:**
-- Model loading
-- Component isolation
-- Material swapping integration
+- GLB file loading
+- Automatic component detection
+- Error handling
+- Loading states
 
-#### `ModelLoader`
-Handles GLB model loading and component extraction.
-
-**Props:**
-- `modelPath: string` - Model URL
-- `scale?: number` - Model scale
-- `position?: [number, number, number]` - Model position
-- `rotation?: [number, number, number]` - Model rotation
-- `onLoad?: (components: ComponentInfo[]) => void` - Load callback
+#### ConfiguratorViewport
+Integrates model loading with material swapping.
 
 **Features:**
-- GLB file loading with `useGLTF`
-- Component extraction
-- Bounding box calculation
-- Scale suggestions
-
-#### `CameraControls`
-Orbit controls for camera interaction.
-
-**Props:** None (uses default Three.js OrbitControls)
-
-**Features:**
-- Mouse/touch controls
-- Zoom, pan, rotate
-- Auto-rotate (optional)
-
-#### `ComponentHighlighter`
-Applies subtle visual highlighting to hovered and selected components.
-
-**Props:**
-- `componentMap: ComponentMap` - Component map
-- `enabled?: boolean` - Whether highlighting is enabled
-- `hoverColor?: string | number` - Hover highlight color
-- `selectedColor?: string | number` - Selected highlight color
-- `highlightIntensity?: number` - Highlight intensity (0-1)
-
-**Features:**
-- Subtle emissive highlighting using material properties
-- Hover and selected state differentiation
-- Non-intrusive design that preserves material visibility
-- Automatic cleanup when materials are swapped
-
-#### `ComponentLabelOverlay`
-HTML overlay that displays component names on hover.
-
-**Props:**
-- `enabled?: boolean` - Whether labels are enabled
-
-**Features:**
-- Real-time position calculation from 3D to screen coordinates
-- Visibility detection (only shows when component is in front of camera)
-- Styled overlay with component names
-- Non-intrusive pointer-events-none design
-
-#### `ComponentLabelTracker`
-Tracks component label positions inside Canvas context.
-
-**Props:**
-- `componentMap: ComponentMap` - Component map
-- `enabled?: boolean` - Whether tracking is enabled
-
-**Features:**
-- Calculates label positions using raycasting
-- Updates store with label position data
-- Must be rendered inside Canvas context
+- Material application to components
+- Component hover detection
+- Error boundaries
 
 ---
 
 ## 🪝 Hooks
 
-### `useModelLoader`
-Custom hook for loading 3D models.
+### useModelLoader
+Loads 3D models from URLs with error handling.
 
-**Returns:**
-- `model: GLTF | null` - Loaded model
-- `loading: boolean` - Loading state
-- `error: Error | null` - Error state
-
-**Usage:**
 ```typescript
-const { model, loading, error } = useModelLoader(modelUrl);
+const { scene, error, isLoading } = useModelLoader(modelPath);
 ```
 
-### `useComponentIsolation`
-Isolates and identifies components from a loaded model.
+### useMaterialSwapping
+Applies materials to model components in real-time.
 
-**Parameters:**
-- `model: GLTF | null` - Loaded model
-
-**Returns:**
-- `components: ComponentInfo[]` - Detected components
-- `componentMap: ComponentMap` - Components grouped by type
-
-**Usage:**
 ```typescript
-const { components, componentMap } = useComponentIsolation(model);
-```
-
-### `useMaterialSwapping`
-Handles material application to components.
-
-**Returns:**
-- `applyMaterial: (component: ComponentType, material: Material) => void`
-- `clearMaterial: (component: ComponentType) => void`
-
-**Usage:**
-```typescript
-const { applyMaterial, clearMaterial } = useMaterialSwapping();
-```
-
-### `useComponentHover`
-Detects component hover and click interactions using raycasting.
-
-**Parameters:**
-- `componentMap: ComponentMap` - Component map
-- `enabled?: boolean` - Whether hover detection is enabled
-- `onHover?: (componentType: ComponentType | null) => void` - Hover callback
-- `onClick?: (componentType: ComponentType | null) => void` - Click callback
-
-**Returns:**
-- `enabled: boolean` - Current enabled state
-
-**Usage:**
-```typescript
-useComponentHover({
+useMaterialSwapping({
   componentMap,
-  enabled: true,
-  onHover: (type) => console.log('Hovered:', type),
-  onClick: (type) => console.log('Clicked:', type),
+  scene,
+  onSwapComplete: (type, material) => console.log('Applied', material.name)
 });
 ```
 
-### `useComponentLabel`
-Calculates screen position for component labels from 3D coordinates.
+### useComponentIsolation
+Extracts and identifies components from loaded models.
 
-**Parameters:**
-- `componentMap: ComponentMap` - Component map
-
-**Returns:**
-- `LabelPosition | null` - Label position with x, y, visible, componentType, componentName
-
-**Usage:**
 ```typescript
-const labelPosition = useComponentLabel(componentMap);
+const { components, componentMap } = useComponentIsolation(scene);
+```
+
+### useModelPersistence
+Persists selected model to localStorage.
+
+```typescript
+useModelPersistence(); // Automatically saves/loads model selection
+```
+
+### useDebounce
+Debounces values for performance optimization.
+
+```typescript
+const debouncedSearch = useDebounce(searchQuery, 300);
 ```
 
 ---
 
-## 🗄️ State Management
+## 📦 State Management
 
-### Zustand Store (`configuratorStore`)
+### Zustand Store
 
-**State:**
-- `currentMode: 'blank' | 'branded'` - Current configurator mode
-- `selectedComponent: ComponentType | null` - Selected component
-- `componentMap: ComponentMap` - Detected components
-- `materialMap: MaterialMap` - Applied materials
-- `selectedBackgroundUrl: string | null` - Current HDR background
-- `selectedModelId: string | null` - Selected model ID
-- `selectedModelUrl: string | null` - Selected model URL
-- `selectedModelScale: number` - Model scale
-- `selectedModelPosition: [number, number, number]` - Model position
-- `selectedModelRotation: [number, number, number]` - Model rotation
+The application uses Zustand for lightweight, performant state management.
 
-**Actions:**
-- `setMode(mode)` - Set configurator mode
-- `setComponent(component)` - Select component
-- `setMaterial(componentType, material)` - Apply material
-- `clearMaterial(componentType)` - Remove material
-- `setBackground(url)` - Set HDR background
-- `setModel(id, url, scale, position, rotation)` - Set model
+**Store Structure:**
+```typescript
+{
+  // Mode state
+  currentMode: 'blank' | 'branded',
+  selectedBrand?: string,
+  
+  // Component state
+  selectedComponent: ComponentType | null,
+  hoveredComponent: ComponentType | null,
+  componentMap: ComponentMap,
+  
+  // Material state
+  materialMap: MaterialMap,
+  
+  // Background state
+  selectedBackgroundUrl: string | null,
+  
+  // Model state
+  selectedModelId: string | null,
+  selectedModelUrl: string | null,
+  selectedModelScale: number,
+  selectedModelPosition: [number, number, number],
+  selectedModelRotation: [number, number, number],
+}
+```
 
 **Usage:**
 ```typescript
 import { useConfiguratorStore } from '@/stores/configuratorStore';
 
-const { selectedComponent, setComponent, setMaterial } = useConfiguratorStore();
+const { selectedComponent, setComponent, materialMap } = useConfiguratorStore();
 ```
+
+---
+
+## ⚡ Performance Optimizations
+
+### Lazy Loading
+
+- **Code Splitting** - MaterialLibrary loaded on-demand
+- **Dynamic Imports** - React.lazy() for component splitting
+- **Texture Lazy Loading** - Intersection Observer for images
+
+### Caching
+
+- **React Query** - API response caching
+- **Texture Caching** - Material instance caching
+- **Component Cache** - Memoized component maps
+
+### Resource Management
+
+- **Three.js Cleanup** - Proper disposal of geometries, materials, textures
+- **Memory Leak Prevention** - useThreeCleanup hook
+- **Debounced Inputs** - Reduced re-renders and API calls
+
+### Optimization Techniques
+
+- **Memoization** - useMemo and useCallback for expensive computations
+- **Virtual Scrolling** - For large material lists (if needed)
+- **Bundle Optimization** - Tree shaking and code splitting
+
+---
+
+## 🧪 Testing
+
+### Testing Philosophy
+
+We follow industry best practices for frontend testing:
+
+- **Component Testing** - Test components in isolation
+- **Integration Testing** - Test component interactions
+- **E2E Testing** - Test complete user workflows
+- **Visual Regression** - Ensure UI consistency
+- **Performance Testing** - Monitor rendering performance
+
+### Testing Tools
+
+| Tool | Purpose | Usage |
+|------|---------|-------|
+| **Jest** | Test runner and assertion library | Unit and integration tests |
+| **React Testing Library** | Component testing utilities | React component tests |
+| **Playwright** | End-to-end testing framework | E2E user flow tests |
+| **@testing-library/user-event** | User interaction simulation | User interaction tests |
+
+### Test Structure
+
+```
+tests/
+├── unit/                    # Unit tests
+│   ├── hooks/
+│   ├── lib/
+│   └── utils/
+├── integration/             # Integration tests
+│   ├── components/
+│   └── features/
+├── e2e/                    # End-to-end tests
+│   └── workflows/
+└── utils/                  # Test utilities
+    └── test-utils.tsx
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests with coverage
+pnpm test:coverage
+
+# Run E2E tests
+pnpm test:e2e
+```
+
+### Test Examples
+
+#### Component Test
+
+```typescript
+import { render, screen } from '@testing-library/react';
+import MaterialSwatch from '@/components/configurator/MaterialSwatch';
+
+describe('MaterialSwatch', () => {
+  it('should render material color correctly', () => {
+    const material = {
+      id: 'test-material',
+      name: 'Test Material',
+      properties: { color: '#FF0000' }
+    };
+    
+    render(<MaterialSwatch material={material} />);
+    
+    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByRole('button')).toHaveStyle({ backgroundColor: '#FF0000' });
+  });
+});
+```
+
+#### Hook Test
+
+```typescript
+import { renderHook, act } from '@testing-library/react';
+import { useDebounce } from '@/hooks/useDebounce';
+
+describe('useDebounce', () => {
+  it('should debounce value updates', () => {
+    jest.useFakeTimers();
+    
+    const { result, rerender } = renderHook(
+      ({ value }) => useDebounce(value, 300),
+      { initialProps: { value: 'initial' } }
+    );
+    
+    expect(result.current).toBe('initial');
+    
+    rerender({ value: 'updated' });
+    expect(result.current).toBe('initial'); // Still initial
+    
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+    
+    expect(result.current).toBe('updated'); // Now updated
+    
+    jest.useRealTimers();
+  });
+});
+```
+
+#### Integration Test
+
+```typescript
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import MaterialLibrary from '@/components/configurator/MaterialLibrary';
+
+describe('MaterialLibrary Integration', () => {
+  it('should filter materials by search query', async () => {
+    const user = userEvent.setup();
+    
+    render(<MaterialLibrary />);
+    
+    const searchInput = screen.getByPlaceholderText('Search textures...');
+    await user.type(searchInput, 'leather');
+    
+    await waitFor(() => {
+      const materials = screen.getAllByRole('button');
+      expect(materials.length).toBeGreaterThan(0);
+    });
+  });
+});
+```
+
+### Test Coverage Goals
+
+| Category | Target Coverage |
+|----------|----------------|
+| **Components** | >80% |
+| **Hooks** | >85% |
+| **Utilities** | >90% |
+| **Overall** | >80% |
 
 ---
 
@@ -501,41 +592,56 @@ const { selectedComponent, setComponent, setMaterial } = useConfiguratorStore();
 ### Available Scripts
 
 ```bash
-pnpm dev      # Start development server
+pnpm dev      # Start development server (port 3000)
 pnpm build    # Build for production
 pnpm start    # Start production server
 pnpm lint     # Run ESLint
+pnpm test     # Run tests
+pnpm test:watch  # Run tests in watch mode
+pnpm test:coverage  # Run tests with coverage
 ```
 
 ### Development Workflow
 
-1. **Make changes** to components or pages
-2. **Hot reload** automatically updates the browser
-3. **Check console** for component detection logs
-4. **Test materials** by selecting components and applying materials
-5. **Verify** model scaling and positioning
+1. **Create feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+
+2. **Make changes**
+   - Write clean, type-safe code
+   - Follow component patterns
+   - Add tests for new features
+
+3. **Test locally**
+   ```bash
+   pnpm test
+   pnpm lint
+   pnpm build
+   ```
+
+4. **Commit and push**
+   ```bash
+   git commit -m "feat: add amazing feature"
+   git push origin feature/amazing-feature
+   ```
+
+### Code Style
+
+- Use TypeScript for all files
+- Follow React best practices (hooks rules, etc.)
+- Use functional components
+- Keep components small and focused
+- Extract reusable logic to hooks
+- Use meaningful variable names
 
 ### Debugging
 
-- **Browser Console** - Check for component detection logs
-- **Network Tab** - Monitor texture and model loading
-- **React DevTools** - Inspect component state
-- **Three.js Inspector** - Debug 3D scene (if installed)
-
-### Component Detection
-
-The system automatically detects components from mesh names. Check the browser console for:
-- Detected component types
-- Mesh names and their mappings
-- Unknown meshes (need naming updates)
-
-### Material Application
-
-Materials are applied in real-time. The system:
-1. Identifies the selected component
-2. Finds all meshes of that component type
-3. Applies the material to those meshes
-4. Updates the 3D scene
+- **React DevTools** - Inspect component tree and state
+- **React Query DevTools** - Monitor API cache state
+- **Browser Console** - Check for errors and logs
+- **Network Tab** - Monitor asset loading
+- **Performance Tab** - Analyze rendering performance
 
 ---
 
@@ -547,103 +653,31 @@ Materials are applied in real-time. The system:
 pnpm build
 ```
 
-This creates an optimized production build in `.next/`.
-
-### Start Production Server
-
-```bash
-pnpm start
-```
-
-### Deploy to Vercel
-
-1. **Connect repository** to Vercel
-2. **Set environment variables** in Vercel dashboard
-3. **Deploy** automatically on push to main branch
-
 ### Environment Variables
 
-Set in your deployment platform:
-- `NEXT_PUBLIC_API_URL` - Backend API URL
+Required environment variables for production:
 
----
-
-## 📚 Key Concepts
-
-### Component Mapping
-
-Components are identified by matching mesh names to patterns:
-
-```typescript
-// Example patterns
-SOLE: ['sole', 'insole', 'bottom', 'base']
-UPPER: ['upper', 'suede', 'leather', 'body']
-LINING: ['lining', 'satin', 'inner']
+```env
+NEXT_PUBLIC_API_URL=https://your-api-url.com
+NODE_ENV=production
 ```
 
-### Material Properties
+### Deployment Platforms
 
-Materials use PBR (Physically Based Rendering) properties:
+- **Vercel** (Recommended)
+  - Automatic deployments on push
+  - Edge functions support
+  - Optimized Next.js builds
 
-```typescript
-{
-  color: '#ffffff',           // Base color (tint)
-  map: 'albedo-url',          // Albedo texture
-  normalMap: 'normal-url',    // Normal map
-  roughnessMap: 'roughness-url', // Roughness map
-  roughness: 0.7,            // Base roughness
-  metalness: 0.0             // Base metalness
-}
-```
+- **Netlify**
+  - Static site hosting
+  - Build plugins support
 
-### Texture Loading
+- **Self-hosted**
+  - Docker container
+  - Node.js server
 
-Textures are loaded with caching:
-
-```typescript
-import { loadTexture } from '@/lib/textureLoader';
-
-const texture = await loadTexture('path/to/texture.jpg');
-```
-
-Supports:
-- Full URLs (R2 public URLs)
-- Relative R2 paths
-- Local public folder paths
-
----
-
-## 🐛 Troubleshooting
-
-### Model Not Loading
-
-**Check:**
-- Model URL is correct
-- CORS headers are configured on R2
-- Network tab for errors
-- Console for loading errors
-
-### Components Not Detected
-
-**Check:**
-- Mesh names follow naming conventions
-- Browser console for detection logs
-- Update `componentMapper.ts` if needed
-
-### Materials Appear Black
-
-**Solution:**
-- Ensure `color` property is `#ffffff` for textured materials
-- Check texture URLs are accessible
-- Verify texture maps are loaded
-
-### Performance Issues
-
-**Optimize:**
-- Reduce texture resolution
-- Use compressed GLB files
-- Enable texture caching
-- Reduce model complexity
+📖 For detailed deployment instructions, see the main [README.md](../README.md#-deployment)
 
 ---
 
@@ -653,19 +687,15 @@ Supports:
 - [React Three Fiber Docs](https://docs.pmnd.rs/react-three-fiber/)
 - [Three.js Documentation](https://threejs.org/docs/)
 - [Zustand Documentation](https://github.com/pmndrs/zustand)
+- [React Query Documentation](https://tanstack.com/query/latest)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-
----
-
-## 📝 License
-
-This project is private and proprietary.
 
 ---
 
 <div align="center">
 
-**Built with ❤️ for immersive 3D web experiences**
+**Built with ❤️ using Next.js and Three.js**
+
+[Main README](../README.md) · [Server README](../server/README.md)
 
 </div>
-
